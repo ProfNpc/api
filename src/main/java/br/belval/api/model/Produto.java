@@ -5,9 +5,12 @@ import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.Objects;
 
+import jakarta.persistence.Entity;
+
 /**
  * Corresponde à tabela produto
  */
+@Entity
 public class Produto {
 	
 	private Integer id;
