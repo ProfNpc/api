@@ -92,4 +92,22 @@ public class ProdutoController {
 		
 	}
 
+	//curl -X DELETE http://localhost:8080/produtos/1
+	@DeleteMapping("/produtos/{id}")
+	public ResponseEntity<String> apagarProduto(@PathVariable Integer id) {
+		
+		Optional<Produto> produtoOpt = repository.findById(id);
+		
+		if (produtoOpt.isEmpty()) {
+			return ResponseEntity
+					.status(HttpStatus.NOT_FOUND)
+					.body("Produto não encontrado!");
+		}
+
+		repository.deleteById(id);
+		
+		return ResponseEntity
+				.status(HttpStatus.OK)
+				.body("Produto apagado com sucesso!");
+	}	
 }
